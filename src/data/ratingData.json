@@ -1,0 +1,12 @@
+{
+  "headers": [
+    {
+      "name": "Haupseite",
+      "url": "asdf"
+    },
+    {
+      "name": "Component1",
+      "url": "cat"
+    }
+  ]
+}
