@@ -5,7 +5,7 @@ import Nav from "./components/Nav";
 import {Route, Switch, withRouter} from 'react-router-dom'
 
 import WelcomePage from "./pages/WelcomePage";
-import ComponentPage from "./pages/TreeComponentPage"
+import ComponentPage from "./pages/ComponentPage"
 
 
 import './global.less';
