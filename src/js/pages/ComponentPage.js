@@ -8,6 +8,11 @@ class ComponentPage extends React.Component {
 
   constructor(props) {
     super(props)
+
+    this.state = {
+      url: "tree",
+    };
+    // this.setState({url:"tree"})
     this.handleSelectMenuItem = this.handleSelectMenuItem.bind(this);
   }
 
@@ -20,11 +25,29 @@ class ComponentPage extends React.Component {
   }
 
   render() {
+
+    let _this = this;
+
+    let comppage = <div></div>
+
     let selectMenuItem = (a, url, c) => {
-      if (url === "cat") {
-        // this.props.fetchClassTreeData("someRatingId")
-      }
+      _this.setState({url:url})
+
     }
+
+
+    if (this.state.url === "tree") {
+      comppage =
+        <ComponentDetailPanel fetchClassDetailData={this.props.fetchClassDetailData}
+                              classTreeData={this.props.classTreeData}
+                              selectedClassData={this.props.selectedClassification}/>
+    }
+    else if (this.state.url === "table") {
+
+      comppage = <div>table</div>
+      // this.props.fetchClassTreeData("someRatingId")
+    }
+
 
     let menuItems = {
       headers: [
@@ -48,10 +71,8 @@ class ComponentPage extends React.Component {
         <div className="flex-container astras_border_panel">
           <SideBar selectMenuItem={selectMenuItem} fetchClassTreeData={this.props.fetchClassTreeData}
                    headers={menuItems.headers}>side bar</SideBar>
+          {comppage}
 
-          <ComponentDetailPanel fetchClassDetailData={this.props.fetchClassDetailData}
-                                classTreeData={this.props.classTreeData}
-                                selectedClassData={this.props.selectedClassification}/>
 
         </div>
 
