@@ -5,6 +5,9 @@ import SideBar from "../SideBar";
 import ComponentDetailPanel from "../panels/ComponentDetailPanel";
 import PieChart from "../components/PieChart/PieChart";
 
+import BarChart from "../components/BarChart/BarChart";
+
+
 class ComponentPage extends React.Component {
 
 	constructor(props) {
@@ -57,7 +60,17 @@ class ComponentPage extends React.Component {
 			comppage = <PieChart slices={slices} width={150}/>
 
 			// this.props.fetchClassTreeData("someRatingId")
+		} else if (this.state.url === "bar") {
+			let bars = [
+				{percent: 0.1, color: '#c1d138'},
+				{percent: 0.7, color: '#7e97db'},
+				{percent: 0.2, color: '#00ab6b'}
+			]
+			comppage = <BarChart bars={bars} width={150}/>
+
 		}
+
+
 
 
 		let menuItems = {

@@ -1,31 +1,20 @@
 import React from "react";
-import "./test.css";
-const size = 40;
+const size = 140;
 
 export default class BarChart extends React.Component {
 
 	constructor(props) {
 		super(props)
-
-		const slices = [
-			{percent: 0.1, color: '#c1d138'},
-			{percent: 0.7, color: '#7e97db'},
-			{percent: 0.2, color: '#00ab6b'},
-		];
-
-
 		this.state = {
 			size:size,
-			slices:slices
+			bars:props.bars
 		}
-		this.doSomething = this.doSomething.bind(this);
 	}
-
 
 	render() {
 		return (
 			<div>
-					<div onMouseOver={()=>this.doSomething()}>
+					<div onMouseOver={()=>this.getBars()}>
 					<svg width={this.state.size} height={this.state.size} transform = "rotate(0 100 100)">
 						{this.getPaths()}
 					</svg>
@@ -39,39 +28,16 @@ export default class BarChart extends React.Component {
 		let paths = [];
 		let xPos = 0;
 		let yPos = 0;
-		let widthSlice = size/this.state.slices.length;
-		let heightSlice = 0;
+		let widthBar = size/this.state.bars.length;
+		let heightBar = 0;
 
-		this.state.slices.forEach(slice => {
-			heightSlice = size*slice.percent;
-			let offset = size - size*slice.percent;
+		this.state.bars.forEach(bar => {
+			heightBar = size*bar.percent;
+			let offset = size - size*bar.percent;
 			yPos = offset;
-			paths.push(<rect className="baranimate" x={xPos}  y={yPos} width={widthSlice} height={heightSlice} style={{fill:slice.color}} >
-				<animateTransform attributeName="transform"
-													attributeType="XML"
-													type="rotate"
-													from="0 60 70"
-													to="360 60 70"
-													dur="10s"
-													repeatCount="indefinite"/>
-				</rect>
-
-			)
-			xPos = xPos + widthSlice;
+			paths.push(<rect className="baranimate" x={xPos}  y={yPos} width={widthBar} height={heightBar} style={{fill:bar.color}} ></rect>)
+			xPos = xPos + widthBar;
 		});
 		return paths;
-	}
-
-	doSomething()  {
-		const s2 = [
-			{percent: 0.4, color: '#c1d138'},
-			{percent: 0.1, color: '#7e97db'},
-			{percent: 0.3, color: '#00ab6b'},
-		];
-
-		this.setState({
-			slices:s2
-		})
-
 	}
 }
