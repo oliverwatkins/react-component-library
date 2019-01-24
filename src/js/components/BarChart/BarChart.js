@@ -14,11 +14,9 @@ export default class BarChart extends React.Component {
 	render() {
 		return (
 			<div>
-					<div onMouseOver={()=>this.getBars()}>
-					<svg width={this.state.size} height={this.state.size} transform = "rotate(0 100 100)">
-						{this.getPaths()}
-					</svg>
-				</div>
+				<svg width={this.state.size} height={this.state.size} transform = "rotate(0 100 100)">
+					{this.getPaths()}
+				</svg>
 			</div>
 		);
 	}
