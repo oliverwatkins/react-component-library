@@ -1,3 +1,5 @@
+//taken from https://alligator.io/react/tabs-component/
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
